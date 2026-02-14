@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Laadli ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#ffd6e8,#fff5fa);
+  overflow-x:hidden;
+  text-align:center;
+  color:#444;
+}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  color:#ff4d6d;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(100vh);opacity:1;}
+  to{transform:translateY(-10vh);opacity:0;}
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+}
+
+h1{
+  font-family:'Pacifico';
+  font-size:42px;
+  color:#ff4d6d;
+}
+
+button{
+  margin-top:15px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+.photo{
+  width:280px;
+  height:280px;
+  border-radius:20px;
+  object-fit:cover;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  margin:20px 0;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  margin:10px;
+  border-radius:15px;
+  width:300px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+input{
+  width:100%;
+  padding:8px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+.letter{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  max-width:500px;
+  display:none;
+  animation:fade 2s forwards;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(.7)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.poem{
+  margin-top:20px;
+  color:#ff4d6d;
+  font-style:italic;
+}
+
+#noBtn{
+  position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+/* floating hearts */
+for(let i=0;i<35;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*20+15+"px";
+  h.style.animationDuration=Math.random()*3+3+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- 1 Welcome -->
+<section id="s0">
+<h1>Hi Laadli ❤️</h1>
+<p>I made this little surprise only for you…</p>
+<button onclick="next(1)">Open 💌</button>
+</section>
+
+<!-- 2 Photo + Song -->
+<section id="s1" style="display:none;">
+<h1>Our Memory 🌙</h1>
+
+<img src="photo.jpg" class="photo">
+
+<p id="timer"></p>
+
+<button onclick="next(2)">Next 💕</button>
+</section>
+
+<!-- 3 Quiz -->
+<section id="s2" style="display:none;">
+<h1>Answer for me 💖</h1>
+
+<div class="card">Where did we first meet?<input></div>
+<div class="card">My favorite color?<input></div>
+<div class="card">What do you love most about me?<input></div>
+<div class="card">Your cutest memory with me?<input></div>
+
+<button onclick="next(3)">Next ❤️</button>
+</section>
+
+<!-- 4 Love Calculator -->
+<section id="s3" style="display:none;">
+<h1>Love Meter ❤️</h1>
+
+<input id="n1" placeholder="Your name">
+<button onclick="love()">Check Love %</button>
+<h2 id="loveRes"></h2>
+
+<button onclick="next(4)">Next 💗</button>
+</section>
+
+<!-- 5 Proposal -->
+<section id="s4" style="display:none; position:relative;">
+<h1>Will you stay with me forever? 🥺❤️</h1>
+<button onclick="next(5)">YES 💍</button>
+<button id="noBtn">NO 😜</button>
+</section>
+
+<!-- 6 Letter -->
+<section id="s5">
+<div class="letter" id="letter">
+
+<h1>My Sweet Laadli ❤️</h1>
+
+<p>
+You are my happiness, my peace, my everything.<br>
+Every moment with you feels magical.<br>
+Thank you for loving me the way you do. i am sorry bcha 
+the gift i ordered for you is not yet delivered so i made 
+this little present for my sbse sohna bchaaaaa....  <br>
+i loveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+sooooooooooooooooooooooooooooooooooooooo
+muchhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh 
+</p>
+
+<div class="poem">
+Laadli, under the moon so bright,<br>
+You’re my star in every night,<br>
+Hold my hand, never apart,<br>
+Forever you live inside my heart ❤️
+After seeing this present i want you to 
+come in the chat and promise me to spend rest of your 
+life with, and whatever happens you will never leave me..
+</div>
+
+</div>
+</section>
+
+<script>
+function next(n){
+  document.querySelectorAll("section").forEach(s=>s.style.display="none");
+  document.getElementById("s"+n).style.display="flex";
+  if(n===5) document.getElementById("letter").style.display="block";
+}
+
+function love(){
+  let val=Math.floor(Math.random()*21)+10000;
+  document.getElementById("loveRes").innerText="Love = "+val+"% ❤️";
+}
+
+/* days counter */
+let meet=new Date("2025-04-20"); // change date if needed
+setInterval(()=>{
+  let now=new Date();
+  let days=Math.floor((now-meet)/86400000);
+  document.getElementById("timer").innerText="Together for "+days+" beautiful days ❤️";
+},1000);
+
+/* run away NO button */
+const noBtn=document.getElementById("noBtn");
+noBtn.onmouseover=()=>{
+  noBtn.style.top=Math.random()*80+"vh";
+  noBtn.style.left=Math.random()*80+"vw";
+}
+</script>
+
+</body>
+</html>
+
